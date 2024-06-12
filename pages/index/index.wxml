@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="id">
+      <image src="{{item.url}}" background-size="cover"></image>
+    </swiper-item>
+  </swiper>
+  <view class='news acea-row row-between-wrapper'>
+       <view class='pictrue'><image src='/static/images/news.png'></image></view>
+       <view class='swiperTxt'>
+            <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="2500" duration="500" vertical="true" circular="true">
+                <block wx:for="{{articles}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+                    <swiper-item catchtouchmove='catchTouchMove'>
+                        <navigator  hover-class="none"  url='/pages/article/article?id={{item.id}}' class='acea-row row-between-wrapper'>
+                            <view class='text acea-row row-between-wrapper'>
+                                <view class='label border2' wx:if="{{index == 0}}">最新</view>
+                                <view class='newsTitle line1 jhx_f3'>{{item.title}}</view>
+                            </view>
+                            <view class='iconfont icon-xiangyou'></view>
+                        </navigator>
+                    </swiper-item>
+                  </block>
+            </swiper> 
+       </view>
+    </view>
+
+  <view class="m-menu jhx_bg0">
+    <navigator hover-class="none" class="item"  wx:for="{{list}}" wx:key="id" bind:tap='bindRedirect'>
+      <image src="{{item.iconUrl}}" background-size="cover"></image>
+      <text class="jhx_f2">{{item.name}}</text>
+    </navigator>
+  </view>
+</view>
+<coupon-window window='{{window}}' couponList="{{coupon}}" bind:onColse="onColse"></coupon-window>
+

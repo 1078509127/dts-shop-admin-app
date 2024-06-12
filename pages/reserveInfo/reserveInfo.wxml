@@ -1,0 +1,16 @@
+<!--pages/reserveInfo/reserveInfo.wxml-->
+<scroll-view class='content' scroll-y="true" style='width: 100%; height:89%;background-color: #efefef;'>
+  <block wx:for="{{showData}}" wx:key="scene">
+    <view class = "button_item" data-testid="{{item}}"  >
+      <button class="goods" data-testid="{{item}}" bindtap="cancel_click">
+        <image class="goods_logo" src = "/static/images/home@selected.png"></image>
+        <text class="goods_name">{{item.scene}}</text>
+        <text class="introduce">{{item.startTime}}</text>
+        <text class="amount">{{item.endTime}}</text>
+        <button class = "btn_goods" >
+          <text class = "buy">取消预约</text>
+        </button>
+      </button>
+    </view>
+  </block>
+</scroll-view>
