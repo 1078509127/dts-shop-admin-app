@@ -1,0 +1,5 @@
+<!--pages/activePush/activePush.wxml-->
+<view>
+  <textarea class="acea-row" value="{{content}}" maxlength="500" auto-focus='true' auto-height bindblur="bindTextArea"> </textarea>
+  <button class="btn-row" type="primary">推送活动</button>
+</view>

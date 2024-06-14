@@ -1,16 +1,25 @@
 <!--pages/reserveInfo/reserveInfo.wxml-->
-<scroll-view class='content' scroll-y="true" style='width: 100%; height:89%;background-color: #efefef;'>
+<view>
+  <view class="search">
+    <view class="input jhx_bg1">
+      <image class="icon"></image>
+      <input class="txt jhx_f1" placeholder="请输入名字/卡号..." value="{{field}}" bindinput="inputCom"></input>
+    </view>
+    <button class="btn" type="primary" bindtap="selectBtn">查询</button>
+  </view>
+  <scroll-view class='content' scroll-y="true" style='width: 100%; height:82%;background-color: #efefef;' bindscrolltolower="paging">
   <block wx:for="{{showData}}" wx:key="scene">
     <view class = "button_item" data-testid="{{item}}"  >
-      <button class="goods" data-testid="{{item}}" bindtap="cancel_click">
-        <image class="goods_logo" src = "/static/images/home@selected.png"></image>
-        <text class="goods_name">{{item.scene}}</text>
-        <text class="introduce">{{item.startTime}}</text>
-        <text class="amount">{{item.endTime}}</text>
+      <button class="goods" data-item="{{item}}" bindtap="cancel_click">
+        <text class="goods_name">姓名:{{item.userName}}</text>
+        <text class="introduce">场所:{{item.scene}}</text>
+        <text class="amount">预约时间:{{item.startTime}} - {{item.endTime}}</text>
         <button class = "btn_goods" >
-          <text class = "buy">取消预约</text>
+          <text class = "buy">查看</text>
         </button>
       </button>
     </view>
   </block>
 </scroll-view>
+<button class="downloadBtn" type="primary" bindtap="download">导出</button>
+</view>

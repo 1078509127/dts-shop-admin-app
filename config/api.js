@@ -9,12 +9,13 @@ var WxApiRoot = 'http://localhost:8083/admin/';
 module.exports = {
   AuthLoginByAccount: WxApiRoot + 'auth/login', //账号登录
   UserInfo: WxApiRoot + 'auth/info', //个人页面用户相关信息
+  selSwiper: WxApiRoot + 'ad/list', //轮播图查看
+  updSwiper: WxApiRoot + 'ad/update', //轮播图修改
+  delSwiper: WxApiRoot + 'ad/delete', //轮播图删除
+  creSwiper: WxApiRoot + 'manage/create', //轮播图上传
+  SelReserve: WxApiRoot + 'manage/list', //预约查询
+  dowReserve: WxApiRoot + 'manage/download', //预约导出
 
-
-
-  SaveReserve: WxApiRoot + 'reserve/reserve', //预约接口
-  DelReserve: WxApiRoot + 'reserve/delReserve', //取消预约接口
-  SelReserve: WxApiRoot + 'reserve/selReserve', //查询预约接口
   isFull: WxApiRoot + 'reserve/isFull', //当日是否约满
   IndexUrl: WxApiRoot + 'home/index', //首页数据接口
   CatalogList: WxApiRoot + 'catalog/index', //分类目录全部分类数据接口

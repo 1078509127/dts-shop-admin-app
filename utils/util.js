@@ -30,7 +30,7 @@ function request(url, data = {}, method = "GET") {
       method: method,
       header: {
         'Content-Type': 'application/json',
-        'X-Dts-Token': wx.getStorageSync('token')
+        'X-Dts-Admin-Token': wx.getStorageSync('X-Dts-Admin-Token')
       },
       success: function(res) {
 

@@ -7,15 +7,15 @@ const app = getApp();
 
 Page({
   data: {
-    list:[
-      {id:1,name:"轮播图配置",iconUrl:"../../static/images/about.png"},
-      {id:2,name:"活动描述",iconUrl:"../../static/images/about.png"},
-      {id:3,name:"关闭预约通道",iconUrl:"../../static/images/about.png"},
-      {id:4,name:"留言查看",iconUrl:"../../static/images/about.png"},
-      {id:5,name:"活动推送",iconUrl:"../../static/images/about.png"},
-      {id:6,name:"预约查询",iconUrl:"../../static/images/about.png"},
-      {id:7,name:"预约到处",iconUrl:"../../static/images/about.png"},
+    setList:[
+      {id:1,name:"预约查询",iconUrl:"../../static/images/about.png"},
+      {id:2,name:"留言查看",iconUrl:"../../static/images/about.png"},
+      {id:3,name:"活动描述",iconUrl:"../../static/images/about.png"},
+      {id:4,name:"活动推送",iconUrl:"../../static/images/about.png"},
+      {id:5,name:"轮播图配置",iconUrl:"../../static/images/about.png"},
+      {id:6,name:"关闭预约通道",iconUrl:"../../static/images/about.png"},
     ],
+    name:"",
     newGoods: [],
     hotGoods: [],
     topics: [],
@@ -33,7 +33,20 @@ Page({
   },
  
   bindRedirect:function(e){
-    console.log(e)
+    console.log(e.currentTarget.dataset)
+    var that = this;
+    that.setData({
+      name: e.currentTarget.dataset.name
+    })
+    if(this.data.name === '轮播图配置'){
+      wx.navigateTo({url: '/pages/swiperSet/swiperSet'})
+    }
+    if(this.data.name === '预约查询'){
+      wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
+    }
+    if(this.data.name === '活动推送'){
+      wx.navigateTo({url: '/pages/activePush/activePush'})
+    }
   },
   onShareAppMessage: function () {
     let userInfo = wx.getStorageSync('userInfo');

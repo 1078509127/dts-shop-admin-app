@@ -25,10 +25,10 @@
     </view>
 
   <view class="m-menu jhx_bg0">
-    <navigator hover-class="none" class="item"  wx:for="{{list}}" wx:key="id" bind:tap='bindRedirect'>
+    <view hover-class="none" class="item" wx:for="{{setList}}" wx:key="id" data-name="{{item.name}}" data-id="{{item.id}}" bindtap='bindRedirect'>
       <image src="{{item.iconUrl}}" background-size="cover"></image>
       <text class="jhx_f2">{{item.name}}</text>
-    </navigator>
+    </view>
   </view>
 </view>
 <coupon-window window='{{window}}' couponList="{{coupon}}" bind:onColse="onColse"></coupon-window>

@@ -1,0 +1,10 @@
+/* pages/activePush/activePush.wxss */
+.acea-row{
+  width: 98%;
+  height: 300rpx;
+  background-color: #ffffff;
+  border: 1rpx rgb(187, 184, 184) dashed ;
+  border-radius: 10rpx;
+  margin: 2rpx auto;
+  font-size: x-large;
+}

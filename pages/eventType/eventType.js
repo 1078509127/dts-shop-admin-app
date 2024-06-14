@@ -16,30 +16,37 @@ Page({
     userinfo:"",
     eventType:"",
     scene:"",
-    sex:"",
-    date:"",
-    startTime:"",
-    endTime:"",
-    tableNumber:"",
+    form:{
+      userName:"",
+      phone:"",
+      unit:"",
+      sex:"",
+      memberCard:"",
+      date:"",
+      startTime:"",
+      endTime:"",
+      tableNumber:"",
+      activeNumber:"",
+      remark:"",
+    },
     checkStartTime:"",
     checkEndTime:"",
-    activeNumber:"",
-    remark:"",
     sexList: ['男', '女'],
     tableList: [1, 2, 3, 4, 5, 6],
     idx:"",
     tableList:[
-      {id: "1", number: "1号桌"},
-      {id: "2", number: "2号桌"},
-      {id: "3", number: "3号桌"},
-      {id: "4", number: "4号桌"},
-      {id: "5", number: "5号桌"},
-      {id: "6", number: "6号桌"},
-      {id: "7", number: "7号桌"},
-      {id: "8", number: "8号桌"},
+      { number: "1号桌"},
+      { number: "2号桌"},
+      { number: "3号桌"},
+      { number: "4号桌"},
+      { number: "5号桌"},
+      { number: "6号桌"},
+      { number: "7号桌"},
+      { number: "8号桌"},
     ],
+    flag:true,
   },
-
+  
   initValidate() {
     const rules = {
       userName: {required: true},
@@ -190,8 +197,8 @@ Page({
   },
   selectApply:function(e){
      this.setData({
-      idx:e.currentTarget.dataset.id,
-      tableNumber: this.data.tableList[e.currentTarget.dataset.id].number
+      idx:e.currentTarget.dataset.number,
+      tableNumber: this.data.tableList[e.currentTarget.dataset.id]
      })
   },
   /**
@@ -200,11 +207,18 @@ Page({
   onLoad(options) {
     var that = this;
     that.setData({
-      eventType: options.eventType,
-      scene:options.scene
+      form: JSON.parse(options.form)
     })
-    this.data.userinfo = wx.getStorageSync('userInfo');
-    this.initValidate();
+    that.setData({
+      eventType: this.data.form.eventType,
+      scene: this.data.form.scene,
+      idx: this.data.form.tableNumber,
+      sex:this.data.form.sex,
+      date : this.data.form.startTime.substring(0,this.data.form.startTime.indexOf(' ')),
+      startTime : this.data.form.startTime.substring(this.data.form.startTime.indexOf(' '),this.data.form.startTime.length),
+      endTime :  this.data.form.endTime.substring(this.data.form.endTime.indexOf(' '),this.data.form.endTime.length),
+    })
+    console.log(this.data.form)
   },
 
   /**

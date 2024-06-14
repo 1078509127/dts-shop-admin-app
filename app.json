@@ -2,6 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/reserveInfo/reserveInfo",
+    "pages/messageView/messageView",
+    "pages/activeDesc/activeDesc",
+    "pages/activePush/activePush",
+    "pages/swiperSet/swiperSet",
+    "pages/closeReserve/closeReserve",
     "pages/eventType/eventType",
     "pages/ucenter/index/index",
     "pages/catalog/catalog",
