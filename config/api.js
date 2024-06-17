@@ -15,6 +15,9 @@ module.exports = {
   creSwiper: WxApiRoot + 'manage/create', //轮播图上传
   SelReserve: WxApiRoot + 'manage/list', //预约查询
   dowReserve: WxApiRoot + 'manage/download', //预约导出
+  activePush: WxApiRoot + 'manage/sendMsg', //活动推送
+  activeList: WxApiRoot + 'manage/activeList', //预约通道查询
+  activeUpdate: WxApiRoot + 'manage/activeUpdate', //预约通道关闭
 
   isFull: WxApiRoot + 'reserve/isFull', //当日是否约满
   IndexUrl: WxApiRoot + 'home/index', //首页数据接口

@@ -1,11 +1,45 @@
 // pages/closeReserve/closeReserve.js
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+const user = require('../../utils/user.js');
+
+//获取应用实例
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    setList:[],
+    switchChecked:"",
+  },
+  //查询数据
+  list:function(){
+  util.request(api.activeList, null, 'GET').then(res => {
+      this.setData({
+        setList: res
+      })
+    })
+  },
+ 
+  //是否开通
+  switch1Change:function(e){
+    util.request(api.activeUpdate, {id:e.currentTarget.dataset.item.id,isOpen:e.detail.value}, 'GET').then(res => {
+      if(res.code ==200){
+        wx.showModal({
+          title: '成功',
+          icon: 'success',
+          duration: 2000
+        });
+      }else{
+        wx.showModal({
+          title: res.message,
+          icon: 'error',
+          duration: 2000
+        });
+      }
+    })
   },
 
   /**
@@ -19,7 +53,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    this.list();
   },
 
   /**

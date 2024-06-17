@@ -34,18 +34,32 @@ Page({
  
   bindRedirect:function(e){
     console.log(e.currentTarget.dataset)
+    // if (!app.globalData.hasLogin) {
+    //   wx.navigateTo({
+    //     url: "/pages/auth/login/login"
+    //   });
+    // }
     var that = this;
     that.setData({
       name: e.currentTarget.dataset.name
     })
-    if(this.data.name === '轮播图配置'){
-      wx.navigateTo({url: '/pages/swiperSet/swiperSet'})
-    }
     if(this.data.name === '预约查询'){
       wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
     }
+    if(this.data.name === '留言查看'){
+      //wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
+    }
+    if(this.data.name === '活动描述'){
+      //wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
+    }
     if(this.data.name === '活动推送'){
       wx.navigateTo({url: '/pages/activePush/activePush'})
+    }
+    if(this.data.name === '轮播图配置'){
+      wx.navigateTo({url: '/pages/swiperSet/swiperSet'})
+    }
+    if(this.data.name === '关闭预约通道'){
+      wx.navigateTo({url: '/pages/closeReserve/closeReserve'})
     }
   },
   onShareAppMessage: function () {
@@ -71,27 +85,27 @@ Page({
 
   getIndexData: function () {
     let that = this;
-    util.request(api.IndexUrl).then(function (res) {
-      if (res.errno === 0) {
-        that.setData({
-          newGoods: res.data.newGoodsList,
-          hotGoods: res.data.hotGoodsList,
-          topics: res.data.topicList,
-          brands: res.data.brandList,
-          floorGoods: res.data.floorGoodsList,
-          banner: res.data.banner,
-          articles: res.data.articles,
-          groupons: res.data.grouponList,
-          channel: res.data.channel,
-          coupon: res.data.couponList
-        });
-      }
-    });
-    util.request(api.GoodsCount).then(function (res) {
-      that.setData({
-        goodsCount: res.data.goodsCount
-      });
-    });
+    // util.request(api.IndexUrl).then(function (res) {
+    //   if (res.errno === 0) {
+    //     that.setData({
+    //       newGoods: res.data.newGoodsList,
+    //       hotGoods: res.data.hotGoodsList,
+    //       topics: res.data.topicList,
+    //       brands: res.data.brandList,
+    //       floorGoods: res.data.floorGoodsList,
+    //       banner: res.data.banner,
+    //       articles: res.data.articles,
+    //       groupons: res.data.grouponList,
+    //       channel: res.data.channel,
+    //       coupon: res.data.couponList
+    //     });
+    //   }
+    // });
+    // util.request(api.GoodsCount).then(function (res) {
+    //   that.setData({
+    //     goodsCount: res.data.goodsCount
+    //   });
+    // });
   },
   onLoad: function (options) {
     this.setData({
