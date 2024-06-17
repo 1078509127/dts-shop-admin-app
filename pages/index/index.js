@@ -8,12 +8,12 @@ const app = getApp();
 Page({
   data: {
     setList:[
-      {id:1,name:"预约查询",iconUrl:"../../static/images/about.png"},
-      {id:2,name:"留言查看",iconUrl:"../../static/images/about.png"},
-      {id:3,name:"活动描述",iconUrl:"../../static/images/about.png"},
-      {id:4,name:"活动推送",iconUrl:"../../static/images/about.png"},
-      {id:5,name:"轮播图配置",iconUrl:"../../static/images/about.png"},
-      {id:6,name:"关闭预约通道",iconUrl:"../../static/images/about.png"},
+      {id:1,name:"预约查询",iconUrl:"../../static/images/jianchachaxun.png"},
+      {id:2,name:"留言查看",iconUrl:"../../static/images/chakangengduo.png"},
+      {id:3,name:"活动描述",iconUrl:"../../static/images/miaoshucopy.png"},
+      {id:4,name:"活动推送",iconUrl:"../../static/images/tuisong.png"},
+      {id:5,name:"轮播图配置",iconUrl:"../../static/images/lunbotupian.png"},
+      {id:6,name:"关闭预约通道",iconUrl:"../../static/images/yansetongdao.png"},
     ],
     name:"",
     newGoods: [],

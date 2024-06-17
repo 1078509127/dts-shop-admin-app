@@ -59,36 +59,58 @@ Page({
     })
   },
   download: function () {
-    wx.request({
-      url: api.dowReserve, //这个地方是你获取二进制流的接口地址
-      method: 'GET',
-      responseType: "arraybuffer", //arraybuffer特别注意的是此处是请求文件流必须加上的属性，不然你导出到手机上的时候打不开，即使是打开了也是空白
-      success: res => {
+    wx.downloadFile({
+      url: api.dowReserve, // 文件的本身url
+      filePath: wx.env.USER_DATA_PATH + '//预约报表.xlsx', // 本地自定义的文件名
+      success: function (res) {
         console.log(res)
-        const fs = wx.getFileSystemManager(); //获取全局唯一的文件管理器 
-        fs.writeFile({ //写文件
-          filePath: wx.env.USER_DATA_PATH + "/预约报表.xlsx",  //wx.env.USER_DATA_PATH 指定临时文件存入的路径，后面字符串自定义
-          data: res.data, // res.data就是获取到的二进制文件流
-          encoding: "binary", //二进制流文件必须是 binary
-          success(e) {
-            wx.openDocument({ // 打开文档
-              filePath: wx.env.USER_DATA_PATH+"/统计报表.xlsx", //拿上面存入的文件路径
-              fileType: '.xls',
-              showMenu: true, // 显示右上角菜单
-              success: function (x) {
-                console.log("success", x);
-              },
-              fail:function(x){
-                console.log("fail",x)
-              }
-            })
+        let filePath = res.filePath; // 微信临时文件路径(这里要使用自定义的名字文件名,否则打开的文件名是乱码)
+        wx.openDocument({
+          filePath: filePath,
+          showMenu: true,  // 是否显示右上角菜单按钮 默认为false(看自身需求，可要可不要。后期涉及到右上角分享功能)
+          success: function (x) {
+            console.log("success", x);
           },
-          fail:function(e){
-            console.log("fail",e)
+          fail: function(x) {
+            console.log("err", x);
           }
-        })
+        });
+      },
+      fail: function(x) {
+        console.log("err", x);
       }
-    })
+    });
+    // wx.request({
+    //   url: api.dowReserve, //这个地方是你获取二进制流的接口地址
+    //   method: 'GET',
+    //   responseType: "arraybuffer", //arraybuffer特别注意的是此处是请求文件流必须加上的属性，不然你导出到手机上的时候打不开，即使是打开了也是空白
+    //   success: res => {
+    //     console.log(res)
+    //     console.log(wx.env.USER_DATA_PATH)
+    //     const fs = wx.getFileSystemManager(); //获取全局唯一的文件管理器 
+    //     fs.writeFile({ //写文件
+    //       filePath: wx.env.USER_DATA_PATH + "/预约报表.xlsx",  //wx.env.USER_DATA_PATH 指定临时文件存入的路径，后面字符串自定义
+    //       data: res.data, // res.data就是获取到的二进制文件流
+    //       encoding: "binary", //二进制流文件必须是 binary
+    //       success(e) {
+    //         wx.openDocument({ // 打开文档
+    //           filePath: wx.env.USER_DATA_PATH + "/统计报表.xlsx", //拿上面存入的文件路径
+    //           fileType: 'xlsx',
+    //           showMenu: true, // 显示右上角菜单
+    //           success: function (x) {
+    //             console.log("success", x);
+    //           },
+    //           fail:function(x){
+    //             console.log("fail",x)
+    //           }
+    //         })
+    //       },
+    //       fail:function(e){
+    //         console.log("fail",e)
+    //       }
+    //     })
+    //   }
+    // })
   },
 
   /**

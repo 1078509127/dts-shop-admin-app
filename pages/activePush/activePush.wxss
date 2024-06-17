@@ -39,7 +39,6 @@
 
 .fb-body .content {
   width: 100%;
-  height: 400rpx;
   color: #333;
   line-height: 40rpx;
   font-size: 28rpx;
@@ -114,7 +113,7 @@
 
 
 
-.fb-btn{
+.container .fb-btn{
   background-color:#85c43f;
   font-size:32rpx;
   color:#fff;

@@ -21,41 +21,34 @@ Page({
     this.setData({
       theme:e.detail.value
     })
-    console.log(this.data.theme)
   },
-  bindTIme:function(e){
-    console.log(e.detail.value)
+  bindTime:function(e){
     this.setData({
       time:e.detail.value
     })
   },
   bindProvider:function(e){
-    console.log(e.detail.value)
     this.setData({
       provider:e.detail.value
     })
   },
   bindSite:function(e){
-    console.log(e.detail.value)
     this.setData({
       site:e.detail.value
     })
   },
   bindOrgan:function(e){
-    console.log(e.detail.value)
     this.setData({
       organ:e.detail.value
     })
   },
   bindContent:function(e){
-    console.log(e.detail.value)
     this.setData({
       content:e.detail.value
      })
     
   },
-  submitBtn:function(e){
-    console.log(123)
+  submitBtn:function(){
     if (this.data.theme == '') {
       util.showErrorToast('请输入活动主题');
       return false;
@@ -76,14 +69,21 @@ Page({
       util.showErrorToast('请输入组织机构');
       return false;
     }
-    if (this.data.content == '') {
-      util.showErrorToast('请输入详情');
-      return false;
-    }
-    debugger
-    // util.request(api.activePush, {message:''}, 'GET').then(res => {
-    //     console.log(res)
-    // })
+    // if (this.data.content == '') {
+    //   util.showErrorToast('请输入详情');
+    //   return false;
+    // }
+    util.request(api.activePush,
+       {
+         theme:this.data.theme,
+         time:this.data.time,
+         provider:this.data.provider,
+         site:this.data.site,
+         organ:this.data.organ,
+      },
+        'GET').then(res => {
+        console.log(res)
+    })
   },
  
   /**

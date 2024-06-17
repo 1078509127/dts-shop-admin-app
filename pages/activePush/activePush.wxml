@@ -6,7 +6,7 @@
   </view>
   <view class="picker">
     <view class="fb-type">
-      <input class="mobile" maxlength="100" type="String" placeholder="请输入活动时间" bindinput="bindTIme" value="{{time}}" />
+      <input class="mobile" maxlength="100" type="String" placeholder="请输入活动时间" bindinput="bindTime" value="{{time}}" />
     </view>
   </view>
   <view class="picker">
@@ -24,8 +24,8 @@
       <input class="mobile" maxlength="100" type="String" placeholder="请输入组织机构" bindinput="bindOrgan" value="{{organ}}" />
     </view>
   </view>
-<view class="fb-body">
+<!-- <view class="fb-body">
   <textarea class="content" placeholder="活动详情..." bindinput="bindContent" maxlength="500" auto-focus="true" value="{{content}}" />
-</view>
-<view class="fb-btn" bindtap="submitBtn">发布</view>
+</view> -->
+  <view class="fb-btn" bindtap="submitBtn">发布</view>
 </view>
