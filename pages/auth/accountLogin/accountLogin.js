@@ -63,7 +63,7 @@ Page({
             data: res.data.data,
             success: function() {
               wx.switchTab({
-                url: '/pages/ucenter/index/index'
+                url: '/pages/index/index'
               });
             }
           });

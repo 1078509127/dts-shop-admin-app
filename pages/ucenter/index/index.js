@@ -99,7 +99,8 @@ Page({
   goLogin() {
     if (!this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/auth/login/login"
+        //url: "/pages/auth/login/login"
+        url: "/pages/auth/accountLogin/accountLogin"
       });
     }
   },
