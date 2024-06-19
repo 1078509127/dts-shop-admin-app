@@ -7,29 +7,34 @@
   text-align: right;
 
 }
-.viewText{
-  background-color: rgb(247, 232, 240);
-  text-align: center;
-  margin: auto;
-  height: 100%;
-  width: 90%;
-  
-}
-.commitSty{
-  position: relative;
-  bottom: -30px;
-  }
 
+.commitSty{
+  position: fixed;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 60rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  }
   .text-area-box {
-    position: relative;
-    width: 90vw;
-    height: 350rpx;
+    position: fixed;
+    padding: 0 auto;
+    width: 98%;
+    height: 1200rpx;
     margin-top: 20rpx;
     background-color: #f1f1f1;
-    padding: 14rpx;
     border-radius: 20rpx;
+    border:2px solid rgb(196, 173, 173);
   }
-  .text-area-len {
+.textareaText{
+  height: 100%;
+   width: 100%;
+   background-color:white;
+   text-align: center;
+}
+ 
+  /* .text-area-len {
     width: 150rpx;
     height: 50rpx;
     border-radius: 10rpx;
@@ -41,4 +46,4 @@
     top: -60rpx;
     text-align: center;
     line-height: 50rpx;
-  }
+  } */
