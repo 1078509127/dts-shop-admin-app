@@ -1,1 +1,44 @@
 /* pages/activeDesc/activeDesc.wxss */
+/* pages/activeDesc/activeDesc.wxss */
+.textSty{
+  margin: 10px auto;
+  width: 90%;
+  height: 100%;
+  text-align: right;
+
+}
+.viewText{
+  background-color: rgb(247, 232, 240);
+  text-align: center;
+  margin: auto;
+  height: 100%;
+  width: 90%;
+  
+}
+.commitSty{
+  position: relative;
+  bottom: -30px;
+  }
+
+  .text-area-box {
+    position: relative;
+    width: 90vw;
+    height: 350rpx;
+    margin-top: 20rpx;
+    background-color: #f1f1f1;
+    padding: 14rpx;
+    border-radius: 20rpx;
+  }
+  .text-area-len {
+    width: 150rpx;
+    height: 50rpx;
+    border-radius: 10rpx;
+    font-size: 26rpx;
+    background-color: #dbe3f7;
+    color: #1552ff;
+    position: absolute;
+    right: 0rpx;
+    top: -60rpx;
+    text-align: center;
+    line-height: 50rpx;
+  }

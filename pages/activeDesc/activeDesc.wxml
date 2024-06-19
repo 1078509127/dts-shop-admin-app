@@ -1,2 +1,15 @@
 <!--pages/activeDesc/activeDesc.wxml-->
 <text>pages/activeDesc/activeDesc.wxml</text>
+<view style="padding: 30rpx;">
+    <!-- <view style="font-size: 30rpx; font-weight: 500;">实时字数textArea</view> -->
+    <view class="text-area-box ">
+              <!-- <form bindsubmit="bindFormSubmit" > -->
+                <view class="text-area-len">{{textAreaValue.length}}/{{textAreaMaxLen}}</view>
+                  <textarea style="height: 100%; width: 100%;" bindblur="getInputValue" maxlength="{{textAreaMaxLen}}" value="{{ArticleDetailInfo}}" bindTextAreaBlur="getInputValue" />
+                 <button class="commitSty" bindtap="upclick">提交</button> <!--bindtap="upclick" -->
+             <!-- </form>  -->
+      </view>
+      
+    
+    
+</view>

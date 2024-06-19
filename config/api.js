@@ -14,6 +14,7 @@ module.exports = {
   delSwiper: WxApiRoot + 'ad/delete', //轮播图删除
   creSwiper: WxApiRoot + 'manage/create', //轮播图上传
   SelReserve: WxApiRoot + 'manage/list', //预约查询
+  selMessage:WxApiRoot + 'manage/getMessage', //留言查看
   dowReserve: WxApiRoot + 'manage/download', //预约导出
   activePush: WxApiRoot + 'manage/sendMsg', //活动推送
   activeList: WxApiRoot + 'manage/activeList', //预约通道查询
@@ -110,6 +111,8 @@ module.exports = {
   ApplyWithdrawal: WxApiRoot + 'brokerage/applyWithdrawal',//佣金提现申请
   ExtractList: WxApiRoot + 'brokerage/extractList',//佣金账号提现记录
   ArticleDetail: WxApiRoot + 'article/detail',//公告详情
+  AdmArticleDetail: WxApiRoot + 'manage/detail',//公告详情//////后增加////
+  AdmUpArticle:WxApiRoot + 'manage/update',//修改公告//////后增加////
   ApplyAgency: WxApiRoot + 'user/applyAgency',//代理申请
   GetSharedUrl: WxApiRoot + 'user/getSharedUrl' //获取推广二维码
 };

@@ -45,12 +45,14 @@ Page({
     if(this.data.name === '预约查询'){
       wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
     }
-    if(this.data.name === '留言查看'){
-      //wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
-    }
-    if(this.data.name === '活动描述'){
-      //wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
-    }
+  //跳转到留言查看页面
+  if(this.data.name === '留言查看'){
+    wx.navigateTo({url: '/pages/messageView/messageView'})
+  }
+  //活动描述
+  if(this.data.name === '活动描述'){
+    wx.navigateTo({url: '/pages/activeDesc/activeDesc'})
+  }
     if(this.data.name === '活动推送'){
       wx.navigateTo({url: '/pages/activePush/activePush'})
     }
