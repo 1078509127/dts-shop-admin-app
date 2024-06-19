@@ -9,12 +9,14 @@
   </view>
   <scroll-view class='content' scroll-y="true" style='width: 100%; height:82%;background-color: #efefef;' bindscrolltolower="paging">
   <block wx:for="{{showData}}" wx:key="scene">
-    <view class = "button_item" data-testid="{{item}}"  >
-      <button class="goods" data-item="{{item}}" bindtap="cancel_click">
+    <view class = "button_item" data-testid="{{item}}">
+      <button class="goods" data-item="{{item}}" >
         <text class="goods_name">姓名:{{item.userName}}</text>
         <text class="introduce">场所:{{item.scene}}</text>
-        <text class="amount">预约时间:{{item.startTime}} - {{item.endTime}}</text>
-        <button class = "btn_goods" >
+        <text class="member-row">会员卡号:{{item.memberCard}}</text>
+        <text class="start-row">开始时间:{{item.startTime}}</text>
+        <text class="end-row">结束时间:{{item.endTime}}</text>
+        <button class = "btn_goods"bindtap="cancel_click" >
           <text class = "buy">查看</text>
         </button>
       </button>
