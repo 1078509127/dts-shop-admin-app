@@ -3,13 +3,13 @@
     <view class='list'>
         <view class='item acea-row row-between-wrapper'>
           <view>头像</view>
-          <view class='pictrue'><image src='{{userInfo.avatarUrl}}'></image></view>
+          <view class='pictrue'><image src='/static/images/avatar.png'></image></view>
         </view>
         <view class='item acea-row row-between-wrapper'>
           <view>名字</view>
-          <view class='input'><input type='text' disabled='true' name='nickname' value='{{userInfo.nickName}}'></input></view>
+          <view class='input'><input type='text' disabled='true' name='nickname' value='{{userInfo.name}}'></input></view>
         </view>
-        <view class='item acea-row row-between-wrapper'>
+        <!-- <view class='item acea-row row-between-wrapper'>
           <view>手机号码</view>
           <button name='phone' class='phone' value='{{userInfo.phone}}' wx:if="{{!userInfo.phone}}"  bindgetphonenumber="getPhoneNumber" hover-class='none' open-type='getPhoneNumber'>
              点击获取
@@ -18,9 +18,9 @@
             <input type='text' disabled='true' name='phone' value='{{userInfo.phone}}' class='id'></input>
             <text class='iconfont icon-suozi'></text>
           </view>
-        </view>
+        </view> -->
         
-        <view class='item acea-row row-between-wrapper'>
+        <!-- <view class='item acea-row row-between-wrapper'>
           <view>代理申请</view>
           <view class='input acea-row row-between-wrapper' wx:if="{{userInfo.userLevel==2}}">
             <input type='text' disabled='true'  value='{{userInfo.userLevelDesc}}' class='id'></input>
@@ -33,7 +33,7 @@
           <button name='phone' class='phone'  wx:else  hover-class='none'  bindtap="applyAgency" >
              点击申请
           </button>
-        </view>
+        </view> -->
         
         <view class='item acea-row row-between-wrapper'>
           <view>ID号</view>

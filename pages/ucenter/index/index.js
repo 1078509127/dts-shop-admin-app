@@ -22,7 +22,7 @@ Page({
       // { url: "/pages/ucenter/footprint/footprint", pic: "footprint.png", name: "浏览足迹" },
       // { url: "/pages/groupon/myGroupon/myGroupon", pic: "group.png", name: "我的拼团" },
       // { url: "/pages/ucenter/address/address", pic: "address.png", name: "地址管理" },
-      { url: "/pages/ucenter/feedback/feedback", pic: "feedback.png", name: "意见反馈" },
+      //{ url: "/pages/ucenter/feedback/feedback", pic: "feedback.png", name: "意见反馈" },
       { url: "/pages/about/about", pic: "about_us.png", name: "关于我们" }
       // *,{ url: "/pages/about/about", pic: "comment.png", name: "使用帮助" }
       ],
@@ -34,14 +34,13 @@ Page({
    * 页面跳转
   */
   goPages:function(e){
-    console.log();
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: e.currentTarget.dataset.url
+        url: e.currentTarget.dataset.url+"?userInfo="+JSON.stringify(this.data.userInfo)
       });
     } else {
       wx.navigateTo({
-        url: "/pages/auth/login/login"
+        url: "/pages/auth/accountLogin/accountLogin"
       });
     };
   },
@@ -126,7 +125,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: "/pages/auth/login/login"
+        url: "/pages/auth/accountLogin/accountLogin"
       });
     }
   },

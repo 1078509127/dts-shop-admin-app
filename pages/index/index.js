@@ -85,14 +85,8 @@ Page({
   },
 
   getIndexData: function () {
-    if (!app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/auth/accountLogin/accountLogin"
-      });
-    }
     let that = this;
     util.request(api.selSwiper).then(function (res) {
-      console.log
       if (res.errno === 0) {
         that.setData({
           banner: res.data.items,

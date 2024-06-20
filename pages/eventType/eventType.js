@@ -218,7 +218,7 @@ Page({
       startTime : this.data.form.startTime.substring(this.data.form.startTime.indexOf(' '),this.data.form.startTime.length),
       endTime :  this.data.form.endTime.substring(this.data.form.endTime.indexOf(' '),this.data.form.endTime.length),
     })
-    console.log(this.data.form)
+    console.log("==============",this.data.form)
   },
 
   /**

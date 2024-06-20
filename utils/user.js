@@ -79,12 +79,13 @@ function loginByWeixin(userInfo) {
  */
 function checkLogin() {
   return new Promise(function(resolve, reject) {
-    if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
-      checkSession().then(() => {
-        resolve(true);
-      }).catch(() => {
-        reject(false);
-      });
+    if (wx.getStorageSync('X-Dts-Admin-Token') && wx.getStorageSync('JSESSIONID')) {
+      // checkSession().then(() => {
+      //   resolve(true);
+      // }).catch(() => {
+      //   reject(false);
+      // });
+      resolve(true);
     } else {
       reject(false);
     }

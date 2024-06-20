@@ -2,12 +2,12 @@
     <view class="form-box">
 
     	<view class="form-item">
-    		<input class="username" value="{{username}}" bindinput="bindUsernameInput" placeholder="账号"/>
+    		<input class="username" type="string" value="{{username}}" bindinput="bindUsernameInput" placeholder="账号"/>
     		<image wx:if="{{ username.length > 0 }}" id="clear-username" class="clear" src="/static/images/clear_input.png" catchtap="clearInput"></image>
     	</view>
 
     	<view class="form-item">
-    		<input class="password" value="{{password}}" password bindinput="bindPasswordInput" placeholder="密码"/>
+    		<input class="password"  type="string" value="{{password}}" password bindinput="bindPasswordInput" placeholder="密码"/>
     		<image class="clear" id="clear-password" wx:if="{{ password.length > 0 }}" src="/static/images/clear_input.png" catchtap="clearInput"></image>
     	</view>
 

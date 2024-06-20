@@ -17,20 +17,24 @@ Page({
       * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      userInfo: JSON.parse(options.userInfo)
+    })
+    console.log(this.data.userInfo)
   },
   onShow: function () {
-    let that = this;
-    //获取用户的登录信息
-    let userInfo = wx.getStorageSync('userInfo');
-    this.setData({
-      userInfo: userInfo,
-      hasLogin: true
-    });
-    //如果无分享推广码,则需要获取分享二维码
-    if (this.data.hasLogin && this.data.userSharedUrl == '') {
-      that.getUserSharedUrl();
-    }
+    // let that = this;
+    // //获取用户的登录信息
+    // let userInfo = wx.getStorageSync('X-Dts-Admin-Token');
+    // this.setData({
+    //   userInfo: userInfo,
+    //   hasLogin: true
+    // });
+    // //如果无分享推广码,则需要获取分享二维码
+    // if (this.data.hasLogin && this.data.userSharedUrl == '') {
+    //   that.getUserSharedUrl();
+    // }
   },
   getUserSharedUrl: function () {
     let that = this;
@@ -158,8 +162,8 @@ Page({
 
         util.request(api.AuthLogout, {}, 'POST');
         app.globalData.hasLogin = false;
-        wx.removeStorageSync('token');
-        wx.removeStorageSync('userInfo');
+        wx.removeStorageSync('JSESSIONID');
+        wx.removeStorageSync('X-Dts-Admin-Token');
         wx.reLaunch({
           url: '/pages/index/index'
         });
