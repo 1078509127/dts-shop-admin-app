@@ -14,29 +14,51 @@ Page({
   },
     //编辑富文本后失去光标调用
     getInputValue:function(e){
-      console.log(e.detail.value+"")
+      debugger
+      wx.showModal({
+        content: '确认修改',
+        complete: (res) => {
+          //点击取消修改按钮
+          if (res.cancel) {
+            return;
+          }
+          // 确认修改按钮
+          if (res.confirm) {
+            util.request(api.AdmUpArticle,{
+                  id:1,
+                  content:e.detail.value,
+                },"POST").then(res => {
+                  //跳转上一画面防止重复提交
+                  if(res.errmsg == "成功"){
+                    wx.switchTab({
+                      url: '/pages/index/index'
+                    });
+                  }
+                })
+          }
+        }
+      })
+
+
+
       // 判断如果点击提交按钮 就修改
-      if(isClick == true){
-        util.request(api.AdmUpArticle,{
-          id:1,
-          content:e.detail.value
-        },"POST").then(res => {
-          console.log(res+"----------------")
-    
-            if(res.data.content != undefined){
-              console.log(res.data.content)
-              this.setData({
-                ArticleDetailInfo: res.data.content
-                
-              });
-            }else{
-              console.log(res.data.content)
-              this.setData({
-                ArticleDetailInfo: res.data.content
-              });
-            }
-        })
-      }
+      // if(isClick == true){
+      //   util.request(api.AdmUpArticle,{
+      //     id:1,
+      //     content:e.detail.value,
+      //   },"POST").then(res => {
+      //     //console.log(res+"----------------")
+      //     if(res.errmsg == "成功"){
+          
+      //       // wx.switchTab({
+      //       //   url: '/pages/index/index'
+      //       // });
+      //     }
+      //   })
+        
+      // }
+
+
     },
     upclick(event) {
       //点击修改公告
