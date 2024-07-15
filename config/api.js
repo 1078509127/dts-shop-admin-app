@@ -1,6 +1,6 @@
 // 以下是业务服务器API地址
  // 本机开发API地址
-var WxApiRoot = 'http://localhost:8083/admin/';
+var WxApiRoot = 'http://192.168.2.232:8080/admin/';
 // 测试环境部署api地址
 // var WxApiRoot = 'http://192.168.0.101:8070/demo/wx/';
 // 线上云平台api地址
@@ -19,6 +19,7 @@ module.exports = {
   activePush: WxApiRoot + 'manage/sendMsg', //活动推送
   activeList: WxApiRoot + 'manage/activeList', //预约通道查询
   activeUpdate: WxApiRoot + 'manage/activeUpdate', //预约通道关闭
+  QRcode: WxApiRoot + 'manage/QRcode', //二维码生成
 
   isFull: WxApiRoot + 'reserve/isFull', //当日是否约满
   IndexUrl: WxApiRoot + 'home/index', //首页数据接口

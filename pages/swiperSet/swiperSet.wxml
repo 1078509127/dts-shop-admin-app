@@ -8,7 +8,7 @@
           <image src="../../static/images/closel.png"></image>
         </view>
       </view>
-      <view class="last-item" wx:if="{{imgs.length >= 5 ? false : true}}" bindtap="bindUpload">
+      <view class="last-item" wx:if="{{imgs.length >= 6 ? false : true}}" bindtap="bindUpload">
         <text class="sign">+</text>
       </view>
     </view>

@@ -64,7 +64,6 @@ Page({
       url: api.dowReserve, // 文件的本身url
       filePath: wx.env.USER_DATA_PATH + '//预约报表.xlsx', // 本地自定义的文件名
       success: function (res) {
-        console.log(res)
         let filePath = res.filePath; // 微信临时文件路径(这里要使用自定义的名字文件名,否则打开的文件名是乱码)
         wx.openDocument({
           filePath: filePath,

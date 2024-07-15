@@ -7,15 +7,44 @@ const app = getApp();
 
 Page({
   data: {
-    setList:[
-      {id:1,name:"预约查询",iconUrl:"../../static/images/jianchachaxun.png"},
-      {id:2,name:"留言查看",iconUrl:"../../static/images/chakangengduo.png"},
-      {id:3,name:"活动描述",iconUrl:"../../static/images/miaoshucopy.png"},
-      {id:4,name:"活动推送",iconUrl:"../../static/images/tuisong.png"},
-      {id:5,name:"轮播图配置",iconUrl:"../../static/images/lunbotupian.png"},
-      {id:6,name:"关闭预约通道",iconUrl:"../../static/images/yansetongdao.png"},
+    setList: [
+      {id: 1,name: "预约查询",iconUrl: "../../static/images/hetongguanli.png"},
+      {
+        id: 2,
+        name: "留言查看",
+        iconUrl: "../../static/images/a-2shouhouzerenweihu.png"
+      },
+      {
+        id: 3,
+        name: "活动描述",
+        iconUrl: "../../static/images/huiqianguanli.png"
+      },
+      {
+        id: 4,
+        name: "活动推送",
+        iconUrl: "../../static/images/a-2pandiandaochu.png"
+      },
+      {
+        id: 5,
+        name: "轮播图配置",
+        iconUrl: "../../static/images/xiaoguotuguanli.png"
+      },
+      {
+        id: 6,
+        name: "关闭预约通道",
+        iconUrl: "../../static/images/a-2kuanshigongxu.png"
+      },
+      {
+        id: 7,
+        name: "二维码生成",
+        iconUrl: "../../static/images/二维码.png"
+      },
     ],
-    name:"",
+    list:[
+      {name:'健身房'},
+      {name:'图书馆'},
+    ],
+    name: "",
     newGoods: [],
     hotGoods: [],
     topics: [],
@@ -31,51 +60,109 @@ Page({
     window: false,
     colseCoupon: false
   },
- 
-  bindRedirect:function(e){
-    if (!app.globalData.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/auth/accountLogin/accountLogin"
-      });
-    }
+  showPicker() {
+    this.setData({
+      showPicker: true
+    })
+  },
+  bindTimeChange(e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  bindRedirect: function (e) {
+    // if (!app.globalData.hasLogin) {
+    //   wx.navigateTo({
+    //     url: "/pages/auth/accountLogin/accountLogin"
+    //   });
+    // }
     var that = this;
     that.setData({
       name: e.currentTarget.dataset.name
     })
-    if(this.data.name === '预约查询'){
-      wx.navigateTo({url: '/pages/reserveInfo/reserveInfo'})
+    if (this.data.name === '预约查询') {
+      wx.navigateTo({
+        url: '/pages/reserveInfo/reserveInfo'
+      })
     }
-  //跳转到留言查看页面
-  if(this.data.name === '留言查看'){
-    wx.navigateTo({url: '/pages/messageView/messageView'})
-  }
-  //活动描述
-  if(this.data.name === '活动描述'){
-    wx.navigateTo({url: '/pages/activeDesc/activeDesc'})
-  }
-    if(this.data.name === '活动推送'){
-      wx.navigateTo({url: '/pages/activePush/activePush'})
+    //跳转到留言查看页面
+    if (this.data.name === '留言查看') {
+      wx.navigateTo({
+        url: '/pages/messageView/messageView'
+      })
     }
-    if(this.data.name === '轮播图配置'){
-      wx.navigateTo({url: '/pages/swiperSet/swiperSet'})
+    //活动描述
+    if (this.data.name === '活动描述') {
+      wx.navigateTo({
+        url: '/pages/activeDesc/activeDesc'
+      })
     }
-    if(this.data.name === '关闭预约通道'){
-      wx.navigateTo({url: '/pages/closeReserve/closeReserve'})
+    if (this.data.name === '活动推送') {
+      wx.navigateTo({
+        url: '/pages/activePush/activePush'
+      })
+    }
+    if (this.data.name === '轮播图配置') {
+      wx.navigateTo({
+        url: '/pages/swiperSet/swiperSet'
+      })
+    }
+    if (this.data.name === '关闭预约通道') {
+      wx.navigateTo({
+        url: '/pages/closeReserve/closeReserve'
+      })
+    }
+    if (this.data.name === '二维码生成') {
+        this.bindSetTap();
     }
   },
-  onShareAppMessage: function () {
-    let userInfo = wx.getStorageSync('userInfo');
-    let shareUserId = 1;
-    if (userInfo) {
-      shareUserId = userInfo.userId;
-    }
-    console.log('/pages/index/index?shareUserId=' + shareUserId);
-    return {
-      title: '聚惠星',
-      desc: '长沙市聚惠星科技与您共约',
-      path: '/pages/index/index?shareUserId=' + shareUserId
-    }
+
+  bindSetTap: function (e, skin) {
+		let itemList = ['图书馆','健身房'];
+		wx.showActionSheet({
+			itemList,
+			success: async res => {
+        let idx = res.tapIndex;
+				if (idx == 0) {
+          this.QRcode('图书馆')
+        }
+        if (idx == 1) {
+          this.QRcode('健身房')
+				}
+			},
+			fail: function (res) { }
+		})
+	},
+  QRcode: function (e) {
+    wx.request({
+      url: api.QRcode,
+      data: {scene: e},
+      method: "GET",
+      header: { 'Content-type': 'application/x-www-form-urlencoded', },
+      responseType: 'arraybuffer', 
+      success: res => {
+        console.log(res)
+        const fs = wx.getFileSystemManager();
+        fs.writeFile({
+          filePath: wx.env.USER_DATA_PATH + "/身体成分报告.jpg", 
+          data: res.data,
+          encoding: "binary", 
+          success(res) {
+            wx.openDocument({ 
+              filePath: wx.env.USER_DATA_PATH + "/身体成分报告.jpg", 
+              showMenu: true, 
+              success: function (res) {
+                setTimeout(() => {
+                  wx.hideLoading()
+                }, 500)
+              }
+            })
+          }
+        })
+      }
+    })
   },
+
 
   onPullDownRefresh() {
     wx.showNavigationBarLoading() //在标题栏中显示加载
